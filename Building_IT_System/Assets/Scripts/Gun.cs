@@ -13,6 +13,8 @@ public class Gun : MonoBehaviour
     private int currentAmmo;
     [SerializeField]
     private int maxAmmo = 10;
+    [SerializeField]
+    private float damage = 10;
 
     [SerializeField]
     private AudioClip shootclip;
@@ -56,6 +58,7 @@ public class Gun : MonoBehaviour
                 {
                     bullet.GetComponent<Rigidbody>().velocity = transform.forward * shootingSpeed;
                     bullet.GetComponent<Bullet>().setCurrentTeam(this.currentTeam);
+                    bullet.GetComponent<Bullet>().setDamage(damage);
                 }
             }
             currentAmmo--;
@@ -73,5 +76,13 @@ public class Gun : MonoBehaviour
     {
         yield return new WaitForSeconds(3);
         currentAmmo = maxAmmo;
+    }
+    public void increaseMaxAmmo(int numAmmo)
+    {
+        this.maxAmmo += numAmmo;
+    }
+    public virtual void increaseDamage(float amountDamage)
+    {
+        this.damage += amountDamage;
     }
 }
