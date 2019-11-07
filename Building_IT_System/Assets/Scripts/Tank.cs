@@ -77,4 +77,20 @@ public class Tank : MonoBehaviour
             }
         }
     }
+    public virtual void increaseDamage(float damage)
+    {
+        if (GetComponentInChildren<Gun>())
+        {
+            gun = GetComponentInChildren<Gun>();
+            gun.increaseDamage(damage);
+        }
+    }
+    public virtual void increaseMaxAmmo(int numAmmo)
+    {
+        if (GetComponentInChildren<Gun>())
+        {
+            gun = GetComponentInChildren<Gun>();
+            gun.increaseMaxAmmo(numAmmo);
+        }
+    }
 }

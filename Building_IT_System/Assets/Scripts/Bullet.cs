@@ -31,6 +31,11 @@ public class Bullet : MonoBehaviour
             Tank tank = other.GetComponent<Tank>();
             tank.applyDamge(damage, this.currentTeam);
         }
+        if (other.GetComponent<Box>())
+        {
+            Box box = other.GetComponent<Box>();
+            box.exploded();
+        }
         if (fX)
         {
             fX.SetActive(true);
@@ -46,5 +51,9 @@ public class Bullet : MonoBehaviour
         Destroy(this.gameObject, 0.4f);
     }
 
+    public void setDamage(float damage)
+    {
+        this.damage = damage;
+    }
 
 }
