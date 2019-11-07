@@ -35,13 +35,22 @@ public class Box : MonoBehaviour
         switch (x)
         {
             case 0:
-                health_sphere.appear();
+                if (health_sphere)
+                {
+                    health_sphere.appear(); 
+                }
                 break;
             case 1:
-                attack_sphere.appear();
+                if (attack_sphere)
+                {
+                    attack_sphere.appear();
+                }
                 break;
             case 2:
-                bullet_sphere.appear();
+                if (bullet_sphere)
+                {
+                    bullet_sphere.appear();
+                }
                 break;
         }
     }
