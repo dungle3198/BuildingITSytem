@@ -22,11 +22,15 @@ public class Box : MonoBehaviour
         {
             explosive_fx.SetActive(true);
         }
-        if (meshr.enabled && col.enabled)
+        if (meshr && col)
         {
-            meshr.enabled = false;
-            col.enabled = false;
+            if (meshr.enabled && col.enabled)
+            {
+                meshr.enabled = false;
+                col.enabled = false;
+            }
         }
+       
         int x = Random.Range(0, 3);
         switch (x)
         {

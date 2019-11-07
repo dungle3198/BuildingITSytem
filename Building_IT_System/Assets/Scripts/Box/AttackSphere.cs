@@ -12,10 +12,13 @@ public class AttackSphere : MonoBehaviour
     float damage = 10;
     void Start()
     {
-        if (meshr.enabled && col.enabled)
+        if (meshr && col)
         {
-            meshr.enabled = false;
-            col.enabled = false;
+            if (meshr.enabled && col.enabled)
+            {
+                meshr.enabled = false;
+                col.enabled = false;
+            }
         }
     }
     public void appear()
