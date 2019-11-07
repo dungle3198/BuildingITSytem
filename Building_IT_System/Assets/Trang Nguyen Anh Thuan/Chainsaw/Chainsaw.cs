@@ -16,6 +16,7 @@ public class Chainsaw : MonoBehaviour
     bool leftandright = true; // left is true, right is fall 
     [SerializeField]
     float damage = 50;
+
     float turnSpeed = 50f;
     // Start is called before the first frame update
     void Start()
@@ -26,27 +27,25 @@ public class Chainsaw : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        movingTime += Time.deltaTime;
-        if (movingTime > interval)
+       
+        if (leftandright)
         {
-            if (leftandright)
+            transform.position = Vector3.Lerp(transform.position, pointA, 5 * Time.deltaTime);
+            float distance = Vector3.Distance(transform.position, pointA);
+            if (distance < 0.125f)
             {
                 leftandright = false;
             }
-            else
-            {
-                leftandright = true;
-            }
-            movingTime = 0;
-        }
-        if (leftandright)
-        {
-            transform.position = Vector3.Lerp(transform.position, pointA, 1 * Time.deltaTime);
         }
         else
         {
-            transform.position = Vector3.Lerp(transform.position, pointB, 1 * Time.deltaTime);
+            transform.position = Vector3.Lerp(transform.position, pointB, 5 * Time.deltaTime);
+            float distance = Vector3.Distance(transform.position, pointB);
+            if (distance < 0.125f)
+            {
+                leftandright = true;
+            }
         }
-        // transform.Rotate(Vector3.up, turnSpeed * Time.deltaTime);
+         transform.Rotate(Vector3.up, turnSpeed * Time.deltaTime);
     }
 }
